@@ -10,6 +10,12 @@ library(DataComputing)
 library(tidyverse)
 ```
 
+Research Question: Has the amount of people over the age of 50 who at least occasionally use the internet increased since 2009?
+
+
+
+
+
 ```{r}
 InternetUsage2019 <- read_csv("C:\\Users\\secos\\OneDrive\\Desktop\\College\\Stat 184\\January 8-February 7, 2019 - Core Trends Survey - CSV.csv")
 ```
@@ -28,10 +34,27 @@ glimpse(InternetUsage2019)
 ```
 
 ```{r}
+Elderly2019 <-
 InternetUsage2019 %>%
-  select(age, eminuse) %>%
+  select(age, sex, eminuse) %>%
+  group_by(sex) %>%
   filter(age >= 50) %>%
   filter(eminuse == 1)%>%
-  summarise(frequse = n())
+  summarise(occuse19 = n())
+```
+
+```{r}
+Elderly2009 <-
+InternetUsage2009 %>%
+  select(age, sex, neta) %>%
+  group_by(sex) %>%
+  filter(age >= 50) %>%
+  filter(neta == 1) %>%
+  summarise(occuse09 = n())
+  
+```
+
+```{r}
+full_join(Elderly2009, Elderly2019)
 ```
 
