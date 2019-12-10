@@ -5,6 +5,8 @@ date: "12/9/2019"
 output: html_document
 ---
 
+
+
 ```{r}
 library(DataComputing)
 library(tidyverse)
@@ -55,6 +57,18 @@ InternetUsage2009 %>%
 ```
 
 ```{r}
-full_join(Elderly2009, Elderly2019)
+InternetGrowth <-
+full_join(Elderly2009, Elderly2019) %>%
+  mutate(frequency = occuse09 + occuse19)
+```
+
+```{r}
+Graphdata <-
+  table(InternetGrowth$sex, InternetGrowth$occuse09, InternetGrowth$occuse19, dnn = c("Sex", "Occuse"))
+
+Graphdata
+```
+
+barplot(Elderly2009, ylab="", xlab="Gears", main="Side-By-Side Bar Chart", col=c("turquoise4", "turquoise2", "turquoise" ), beside=TRUE, width=.3)
 ```
 
