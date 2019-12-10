@@ -43,8 +43,6 @@ InternetUsage2019 %>%
   filter(grepl("1", eminuse, ignore.case = TRUE)) %>%
   filter(age >= 50) %>%
   summarise(use2019 = n())
-
-Elderly2019
 ```
 
 ```{r}
@@ -55,8 +53,6 @@ InternetUsage2009 %>%
   filter(age >= 50) %>%
   filter(neta == 1) %>%
   summarise(use2009 = n())
-
-Elderly2009  
 ```
 
 ```{r}
