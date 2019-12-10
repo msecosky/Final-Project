@@ -42,7 +42,7 @@ InternetUsage2019 %>%
   group_by(sex) %>%
   filter(age >= 50) %>%
   filter(eminuse == 1)%>%
-  summarise(occuse19 = n())
+  summarise(use2019 = n())
 ```
 
 ```{r}
@@ -52,23 +52,23 @@ InternetUsage2009 %>%
   group_by(sex) %>%
   filter(age >= 50) %>%
   filter(neta == 1) %>%
-  summarise(occuse09 = n())
+  summarise(use2009 = n())
   
 ```
 
 ```{r}
 InternetGrowth <-
-full_join(Elderly2009, Elderly2019) %>%
-  mutate(frequency = occuse09 + occuse19)
+full_join(Elderly2009, Elderly2019)
 ```
+```{r}
+InternetGrowthGraph <-
+InternetGrowth %>%
+  gather(key = when, value = occuse, use2009, use2019)
+```
+
+
 
 ```{r}
-Graphdata <-
-  table(InternetGrowth$sex, InternetGrowth$occuse09, InternetGrowth$occuse19, dnn = c("Sex", "Occuse"))
-
-Graphdata
-```
-
-barplot(Elderly2009, ylab="", xlab="Gears", main="Side-By-Side Bar Chart", col=c("turquoise4", "turquoise2", "turquoise" ), beside=TRUE, width=.3)
+ggplot(data=InternetGrowthGraph,aes(x=when,y=occuse ))+geom_bar(stat='identity',position='stack', width=.9)+ facet_wrap(~sex,ncol=3) 
 ```
 
