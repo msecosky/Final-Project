@@ -59,6 +59,8 @@ InternetUsage2009 %>%
 InternetGrowth <-
 full_join(Elderly2009, Elderly2019)
 ```
+
+
 ```{r}
 InternetGrowthGraph <-
 InternetGrowth %>%
@@ -66,8 +68,30 @@ InternetGrowth %>%
 ```
 
 
+```{r}
+InternetGrowthGraph %>%
+  ggplot(aes(x=when, y=occuse, fill = sex)) +
+  geom_bar(stat = 'identity', position = 'stack', width = .9) +
+  facet_wrap(~sex, ncol = 3)
+```
 
 ```{r}
-ggplot(data=InternetGrowthGraph,aes(x=when,y=occuse ))+geom_bar(stat='identity',position='stack', width=.9)+ facet_wrap(~sex,ncol=3) 
+InternetUsage2009graph <-
+InternetUsage2009 %>%
+  select(age, sex, neta) %>%
+  group_by(sex) %>%
+  filter(age >= 50) %>%
+  filter(neta < 3) %>%
+  filter(age < 99)
+```
+
+
+
+```{r}
+InternetUsage2009graph %>%
+  ggplot(aes(x = age)) +
+  geom_density() +
+  geom_histogram(binwidth = 1.8, alpha = .5) +
+  labs(title = "Histogram of at least Occasional Usage by Age")
 ```
 
