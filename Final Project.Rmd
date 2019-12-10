@@ -11,6 +11,24 @@ library(tidyverse)
 ```
 
 ```{r}
-InternetUsage <- read_csv("C:\\Users\\secos\\OneDrive\\Desktop\\College\\Stat 184\\January 8-February 7, 2019 - Core Trends Survey - CSV.csv")
+InternetUsage2019 <- read_csv("C:\\Users\\secos\\OneDrive\\Desktop\\College\\Stat 184\\January 8-February 7, 2019 - Core Trends Survey - CSV.csv")
+```
+
+```{r}
+InternetUsage2009 <- read.csv("C:\\Users\\secos\\OneDrive\\Desktop\\College\\June 18-21, 2009 - Video Uploading - CSV.csv")
+```
+
+```{r}
+glimpse(InternetUsage2009)
+```
+
+
+```{r}
+glimpse(InternetUsage2019)
+```
+
+```{r}
+InternetUsage %>%
+  choose()
 ```
 
