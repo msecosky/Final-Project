@@ -28,7 +28,10 @@ glimpse(InternetUsage2019)
 ```
 
 ```{r}
-InternetUsage %>%
-  choose()
+InternetUsage2019 %>%
+  select(age, eminuse) %>%
+  filter(age >= 50) %>%
+  filter(eminuse == 1)%>%
+  summarise(frequse = n())
 ```
 
