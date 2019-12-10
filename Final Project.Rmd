@@ -1,0 +1,16 @@
+---
+title: "Final Project"
+author: "Mike Secosky"
+date: "12/9/2019"
+output: html_document
+---
+
+```{r}
+library(DataComputing)
+library(tidyverse)
+```
+
+```{r}
+InternetUsage <- read_csv("C:\\Users\\secos\\OneDrive\\Desktop\\College\\Stat 184\\January 8-February 7, 2019 - Core Trends Survey - CSV.csv")
+```
+
